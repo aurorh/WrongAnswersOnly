@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<!-- leaving this out for now-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+crossorigin="anonymous">
+</script>
+
+<title>Wrong Answers Only</title>
+</head>
+<body style="background-color: white;">
+
+<div class="container w-50 my-3">
+<div class="container btn btn-primary">
+<h1>Wrong Definitions Only</h1>
+</div>
+<br><br><br>
+<div class="mb-3">
+<form action="{% url 'dictionary:wrongword' %}" method="post">
+{% csrf_token %}
+<input type="text" class="form-control" name="word" id="exampleFormControlInput1" placeholder="Search For A Word..."><br>
+<input type="submit" name="" class="btn btn-success" value="Show Definition">
+</form>
+</div>
+<hr>
+<h4 class="text-black">{{word}}</h4>
+<h5 class="text-black">{{text}}</h5>
+</div>

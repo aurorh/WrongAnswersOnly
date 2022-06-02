@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="eng">
+<head>
+<title>Wrong Answers Only</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.cs>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+crossorigin="anonymous">
+</script>
+</head>
+<body>
+<div class="container">
+<div class="jumbotron">
+<h1 class="display-3"></h1>
+<p class="lead">Wrong Calculations Only</p>
+<hr class="my-4">
+</div>
+
+
+<textarea id="resultArea" readonly rows="3" cols="21"></textarea>
+
+<table>
+<tr>
+<td></td>
+<td></td>
+<td><button id="clrTxt" class="btn btn-danger">C</button></td>
+<td><button id="del" class="btn btn-default">&#9746;</button></td>
+</tr>
+
+<tr>
+<td><button id="num7" class="btn btn-default">7</button></td>
+<td><button id="num8" class="btn btn-default">8</button></td>
+<td><button id="num9" class="btn btn-default">9</button></td>
+<td><button id="op3" class="btn btn-default">&div;</button></td>
+</tr>
+
+<tr>
+<td><button id="num4" class="btn btn-default">4</button></td>
+<td><button id="num5" class="btn btn-default">5</button></td>
+<td><button id="num6" class="btn btn-default">6</button></td>
+<td><button id="op2" class="btn btn-default">&times;</button></td>
+</tr>
+
+<tr>
+
+    <td><button id="num1" class="btn btn-default">1</button></td>
+    <td><button id="num2" class="btn btn-default">2</button></td>
+    <td><button id="num3" class="btn btn-default">3</button></td>
+    <td><button id="op1" class="btn btn-default">&minus;</button></td>
+    </tr>
+    
+    <tr>
+    <td><button id="decp" class="btn btn-default">.</button></td>
+    <td><button id="num0" class="btn btn-default">0</button></td>
+    <td><button id="eq" class="btn btn-default">=</button></td>
+    <td><button id="op0" class="btn btn-default">&plus;</button></td>
+    </tr>
+    </table>
+    </div>
+    <script>
+    var numKeys = [];
+    var opns = [];
+    var res = document.querySelector("#resultArea");
+    var clrBtn = document.querySelector("#clrTxt");
+    var delBtn = document.querySelector("#del");
+    var eqBtn = document.querySelector("#eq");
+    var decPoint = document.querySelector("#decp");
+    var opnSyms = ["+", "-", "*", "/"];
+    
+    for(var i=0;i<=9;i++){
+    (function(i){
+    qs = "#num" + i;
+    numKeys.push(document.querySelector(qs));
+    numKeys[i].addEventListener("click", function(){
+    res.textContent += i;
+    });
+    }(i));
+    }
+    
+    for(var i=0;i<=3;i++){
+    (function(i){
+    qs = "#op" + i;
+    opns.push(document.querySelector(qs));
+    opns[i].addEventListener("click", function(){
+        res.textContent += opnSyms[i];
+});
+}(i));
+}
+
+clrBtn.addEventListener("click", function(){
+res.textContent = "";
+});
+
+delBtn.addEventListener("click", function(){
+res.textContent = res.textContent.substring(0, res.textContent.length - 1);
+});
+
+decPoint.addEventListener("click", function(){
+res.textContent += ".";
+});
+
+eqBtn.addEventListener("click", function(){
+try{
+res.textContent = eval(res.textContent);
+}
+catch(e){
+res.textContent = "Invalid Syntax";
+}
+});
+</script>
+<style>table{
+margin-left:auto;
+margin-right:auto;
+}
+
+textarea{
+display: block;
+margin-bottom: 8px;
+margin-left:auto;
+margin-right:auto;
+border-radius: 5px;
+}
+
+button{
+height: 40px;
+width: 40px;
+}</style>
+</body>
+</html>
