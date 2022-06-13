@@ -76,10 +76,10 @@ WSGI_APPLICATION = 'WrongAnswersOnly.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 DATABASES = {
 'default': {
-'ENGINE': 'django.db.backends.postgresql_psycopg2',
-'NAME': 'waodatabase',
-'USER': 'jeeves',
-'PASSWORD': 'space',
+'ENGINE': 'django.db.backends.sqlite3',
+'NAME': '',
+'USER': '',
+'PASSWORD': '',
 'HOST': 'localhost',
 'PORT': '',
 }
